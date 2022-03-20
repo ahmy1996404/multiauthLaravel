@@ -266,7 +266,7 @@
                         </div>
                         <ul>
 
-                            <li><a href="#"><span><i class="fas fa-user"></i></span> User Profile</a></li>
+                            <li><a href="{{ route('user.profile') }}"><span><i class="fas fa-user"></i></span> User Profile</a></li>
                             <li><a href=" "><span><i class="fas fa-cogs"></i></span> Password Change</a></li>
                             <li>
 
