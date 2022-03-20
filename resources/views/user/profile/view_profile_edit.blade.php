@@ -1,5 +1,6 @@
 @extends('user.user_master')
  @section('user')
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  <div class="row" style="padding: 20px">
     <div class="col-md-6">
 
@@ -14,16 +15,26 @@
         </div>
         <div class="mb-3">
             <label for="formFile" class="form-label">Profile Image</label>
-            <input class="form-control" type="file" id="formFile">
+            <input class="form-control" type="file" id="image">
         </div>
           <div class="mb-3">
-             <img src="{{ (!empty($editData->profile_photo_path)) ? url('upload/user_images/'.$editData->profile_photo_path) : url('upload/noimagejpg.jpg') }}" class="card-img-top" alt="..." style="width: 100px;height:100px">
+             <img id = "showImage" src="{{ (!empty($editData->profile_photo_path)) ? url('upload/user_images/'.$editData->profile_photo_path) : url('upload/noimagejpg.jpg') }}" class="card-img-top" alt="..." style="width: 100px;height:100px">
 
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 
 </div>
-
+<script>
+    $(document).ready(function(){
+        $('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function (e){
+                $('#showImage').attr('src',e.target.result )
+            }
+            reader.readAsDataURL(e.target.files['0'])
+        })
+    })
+</script>
  @endsection
