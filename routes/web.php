@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix'=>'admin','middleware'=>['admin.admin']],function(){
+Route::group(['prefix'=>'admin','middleware'=>['admin:admin']],function(){
     Route::get('/login',[AdminController::class,'loginForm']);
     Route::post('/login', [AdminController::class, 'store'])->name('admin.login');
 });

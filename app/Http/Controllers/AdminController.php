@@ -10,7 +10,7 @@ use Laravel\Fortify\Actions\AttemptToAuthenticate;
 use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
 use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
-use Laravel\Fortify\Contracts\LoginResponse;
+use App\Http\Responses\LoginResponse;
 use Laravel\Fortify\Contracts\LoginViewResponse;
 use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Features;
