@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -40,6 +41,10 @@ class MainUserController extends Controller
             $data['profile_photo_path'] = $filename;
         }
         $data->save();
-        return redirect()->route('user.profile');
+        $notification = array(
+            'message '=> ' user profile updated successfuly',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('user.profile')->with($notification);
     }
 }

@@ -24,6 +24,8 @@
     <!-- <link rel="stylesheet" href="assets/plugins/chartjs-bar-chart/chart.css"> -->
     <!--Custom CSS-->
     <link rel="stylesheet" href="{{ asset('userbackend/panel/assets/css/style.css') }}">
+
+    <link rel="stylesheet" type="text/css" href ="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
 </head>
 
 <body id="page-top">
@@ -455,6 +457,27 @@
     <!-- Main js -->
     <script src="{{ asset('userbackend/panel/assets/js/main.js') }}"></script>
 
+
+    <script type="text/javascript" src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css') }}"></script>
+    <script>
+        @if (Session::has('message'))
+        var type ="{{ Session::get('alert-type','info') }}"
+        switch(type){
+            case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+             case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+             case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
+            case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+        }
+        @endif
+    </script>
 
 
 
