@@ -6,6 +6,7 @@ use App\Models\User;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class MainUserController extends Controller
@@ -46,5 +47,28 @@ class MainUserController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('user.profile')->with($notification);
+    }
+    public function UserPasswordView()
+    {
+         return view('user.password.edit_password');
+    }
+    public function UserPasswordUpdate(Request $request)
+    {
+        $validateData = $request->validate([
+            'oldpassword' => 'required',
+            'password'=>'required|confirmed',
+
+        ]);
+        $hashedPassword = Auth::user()->password;
+        if(Hash::check($request->oldpassword , $hashedPassword)){
+            $user = User::find(Auth::id());
+            $user->password = Hash::make($request->password);
+            $user->save();
+            Auth::logout();
+            return redirect()->route('login');
+
+        }else{
+            return redirect()->back();
+        }
     }
 }

@@ -269,7 +269,7 @@
                         <ul>
 
                             <li><a href="{{ route('user.profile') }}"><span><i class="fas fa-user"></i></span> User Profile</a></li>
-                            <li><a href=" "><span><i class="fas fa-cogs"></i></span> Password Change</a></li>
+                            <li><a href=" {{ route('user.password.view') }} "><span><i class="fas fa-cogs"></i></span> Password Change</a></li>
                             <li>
 
                                 <a href="{{ route('user.logout') }} "><span><i class="fas fa-unlock-alt"></i></span> Logout</a>
